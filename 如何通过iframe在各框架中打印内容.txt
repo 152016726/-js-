@@ -1,0 +1,9 @@
+1.在主框架中的index.html中添加iframe并给iframe添加Id,src对应的html相对路径，和设置显示样式，具体css样式可以通过style里的css实现；
+2.在框架中时操作代码如下：
+	    $("#frame").show();//让iframe显示
+            var printHtml=$("#result .result").html();//获取父元素中的内容
+            var subWeb = document.frames ? document.frames["frame"].document : $("#frame")[0].contentDocument;//获取iframe中document对象
+            $(subWeb).ready(function () {//在iframe渲染完毕之后执行操作
+                $(subWeb).find('#showBox').html(printHtml);//将父元素中的内容放置在iframe中显示
+            });
+            $("#frame")[0].contentWindow.print();//调用iframe的打印
